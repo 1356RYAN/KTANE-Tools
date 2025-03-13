@@ -6,6 +6,7 @@ full_list = list((full))
 fibo = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]
 binary = {0: 0, 1: 1, 2: 1, 3: 2, 4: 1, 5: 2, 6: 2, 7: 3, 8: 1, 9: 2, 10: 2}
 prime = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+final =[]
 def all_slots(slot_num1, lit1, unlit1, RCA_PS21,slot_num1_orig):    
     if slot_num1 == 2:
         slot_num1 = 5
@@ -77,7 +78,6 @@ def same_num(x):
         return False
 
 for x in range(len(full_list)):
-    print("Slot:", x)
     slot = x + 1
     slot_num_orig = int(full_list[x])
     slot_num = all_slots(slot_num_orig, lit, unlit, RCA_PS2, slot_num_orig)
@@ -94,5 +94,5 @@ for x in range(len(full_list)):
         slot_num = slot_num - 10
     while slot_num < 0:
         slot_num = slot_num + 10
-    print("The slot number is:", slot_num)
-    print("\n")
+    final.append(slot_num)
+print("Final slot numbers:", final)
