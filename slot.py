@@ -84,7 +84,7 @@ for x in range(3):
             slot_num4 = slot_num4 + 1
         return slot_num4
     slot_num = all_slots(slot_num_orig, lit, unlit, RCA_PS2, slot_num_orig)
-    print (slot_num)
+    print ("Pre-slot:",slot_num)
     if slot == 1:
         slot_num = slot_position1(slot_num)
     elif slot == 2:
