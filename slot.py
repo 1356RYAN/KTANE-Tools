@@ -7,6 +7,8 @@ fibo = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]
 binary = {0: 0, 1: 1, 2: 1, 3: 2, 4: 1, 5: 2, 6: 2, 7: 3, 8: 1, 9: 2, 10: 2}
 prime = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
 final =[]
+battery = -1
+
 def all_slots(slot_num1, lit1, unlit1, RCA_PS21,slot_num1_orig):    
     if slot_num1 == 2:
         slot_num1 = 5
@@ -22,9 +24,11 @@ def all_slots(slot_num1, lit1, unlit1, RCA_PS21,slot_num1_orig):
     elif RCA_PS21 == 1:
         return slot_num1
     else:
-        battery = int(input("Input amount of batteries:"))
+        if battery == -1:
+            battery = int(input("Input amount of batteries:"))
         slot_num1 = slot_num1_orig + battery
     return slot_num1
+
 def slot_position1(slot_num2):
     parallel = int(input("Input 1 parallel is present, 0 if not:"))
     right_num = int(full_list[1])
