@@ -7,9 +7,10 @@ fibo = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]
 binary = {0: 0, 1: 1, 2: 1, 3: 2, 4: 1, 5: 2, 6: 2, 7: 3, 8: 1, 9: 2, 10: 2}
 prime = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
 final =[]
-battery = -1
+battery = 30
 
 def all_slots(slot_num1, lit1, unlit1, RCA_PS21,slot_num1_orig):    
+    global battery
     if slot_num1 == 2:
         slot_num1 = 5
     elif slot_num1 == 7:
@@ -24,7 +25,7 @@ def all_slots(slot_num1, lit1, unlit1, RCA_PS21,slot_num1_orig):
     elif RCA_PS21 == 1:
         return slot_num1
     else:
-        if battery == -1:
+        if battery == 30:
             battery = int(input("Input amount of batteries:"))
         slot_num1 = slot_num1_orig + battery
     return slot_num1
@@ -56,6 +57,7 @@ def slot_position2(slot_num3):
         for i in range(len(fibo)):
             if fibo[i] == slot_num3:
                 slot_num3 = slot_num3 + fibo[i + 1]
+                break
     elif slot_num3 >= 7:
         slot_num3 = slot_num3 + 4
     else:
@@ -76,7 +78,9 @@ def slot_position3(slot_num4,slot_num4_orig):
     return slot_num4
 
 def same_num(x):
-    if any(ele == x for ele in full_list):
+    checklist = full_list
+    checklist.pop()
+    if any(int(ele) == x for ele in checklist):
         return True
     else:
         return False
@@ -85,6 +89,7 @@ for x in range(len(full_list)):
     slot = x + 1
     slot_num_orig = int(full_list[x])
     slot_num = all_slots(slot_num_orig, lit, unlit, RCA_PS2, slot_num_orig)
+    print(slot_num)
     if slot == 1:
         slot_num = slot_position1(slot_num)
     elif slot == 2:
@@ -100,3 +105,4 @@ for x in range(len(full_list)):
         slot_num = slot_num + 10
     final.append(slot_num)
 print("Final slot numbers:", final)
+input("Press ENTER to exit")
