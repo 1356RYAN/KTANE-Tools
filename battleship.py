@@ -7,12 +7,14 @@ final_pair_list = []
 def serial_num_to_lists(serial_num)->None:
     global serial_num_list
     global serial_let_list
+    serial_let_list_pre = []
     serial_tot_list = list(serial_num)
     for i in serial_tot_list:
         if i.isdigit():
             serial_num_list.append(i)
         else:
-            serial_let_list.append(i)
+            serial_let_list_pre.append(i)
+    serial_let_list = [item.upper() for item in serial_let_list_pre]
 
 def pairs(serial_num_list,serial_let_list)->None:
     global final_pair_list
