@@ -5,8 +5,7 @@ def battleship(serial_num: str, ports: int, indicator: int, batteries: int):
     serial_let_list = []
     final_pair_list = []
     def serial_num_to_lists(serial_num)->None:
-        global serial_num_list
-        global serial_let_list
+        nonlocal serial_num_list, serial_let_list
         serial_let_list_pre = []
         serial_tot_list = list(serial_num)
         for i in serial_tot_list:
@@ -17,7 +16,6 @@ def battleship(serial_num: str, ports: int, indicator: int, batteries: int):
         serial_let_list = [item.upper() for item in serial_let_list_pre]
 
     def pairs(serial_num_list,serial_let_list)->None:
-        global final_pair_list
         if len(serial_num_list) > len(serial_let_list):
             pair_amount = len(serial_let_list)
         else:
@@ -33,6 +31,7 @@ def battleship(serial_num: str, ports: int, indicator: int, batteries: int):
             final_pair_list.append(letter + str(number))
 
     def final_pair():
+        nonlocal ports
         while ports > 5:
             ports = ports - 5
         while ports < 1:

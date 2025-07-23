@@ -54,7 +54,7 @@ def main():
     def battleship_call():
         serial = dpg.get_value("Serial")
         ports = int(dpg.get_value("Ports"))
-        indicators = int(dpg.get_value("Unlit Total"))
+        indicators = int(dpg.get_value("Unlit Total")) + int(dpg.get_value("Lit Total"))
         batteries = int(dpg.get_value("Batteries"))
 
         final_battleship = bs.battleship(serial, ports, indicators, batteries)
@@ -63,9 +63,9 @@ def main():
     # Gui Section
 
     dpg.create_context()
-    dpg.create_viewport(title='KTANE Tools', width=465, height=455, min_width=465, min_height=455, max_width=465, max_height=455)
+    dpg.create_viewport(title='KTANE Tools', width=465, height=500, min_width=465, min_height=500, max_width=465, max_height=500)
 
-    with dpg.window(label="Combined Info", height=220, width=240, pos=(0, 0), no_resize=True, no_move=True, no_collapse=True):
+    with dpg.window(label="Combined Info", height=270, width=240, pos=(0, 0), no_resize=True, no_move=True, no_collapse=True):
         dpg.add_text("Enter Serial Number:")
         dpg.add_input_text(tag="Serial", default_value="")
 
@@ -81,7 +81,7 @@ def main():
         dpg.add_text("Enter Amount of Batteries:")
         dpg.add_input_int(tag="Batteries", default_value=0)
 
-    with dpg.window(label="Forget Me Not", height=200, width=240, pos=(0, 220), no_resize=True, no_move=True, no_collapse=True):
+    with dpg.window(label="Forget Me Not", height=200, width=240, pos=(0, 270), no_resize=True, no_move=True, no_collapse=True):
 
         dpg.add_text("Unlit CAR Indicator Present:")
         dpg.add_checkbox(tag="Unlit Car", default_value=False)
@@ -95,7 +95,7 @@ def main():
         dpg.add_text("Final Number Order:")
         dpg.add_text("", tag="Final List")
 
-    with dpg.window(label="Slots", height=420, width=210, pos=(240, 0), no_resize=True, no_move=True, no_collapse=True):
+    with dpg.window(label="Slots", height=285, width=210, pos=(240, 0), no_resize=True, no_move=True, no_collapse=True):
 
         dpg.add_text("RCA/PS2 Present:")
         dpg.add_checkbox(tag="RCA/PS2", default_value=False)
@@ -115,7 +115,7 @@ def main():
         dpg.add_text("Final Slot Numbers:")
         dpg.add_text("", tag="Final Slots")
 
-    with dpg.window(label="Battleship", height=420, width=210, pos=(240, 220), no_resize=True, no_move=True, no_collapse=True):
+    with dpg.window(label="Battleship", height=185, width=210, pos=(240, 285), no_resize=True, no_move=True, no_collapse=True):
         dpg.add_text("Amount of Ports:")
         dpg.add_input_int(tag="Ports", default_value=0)
 
