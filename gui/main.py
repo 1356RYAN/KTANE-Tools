@@ -1,5 +1,6 @@
 import forget_me_not as fmn
 import slot
+import battleship as bs
 import dearpygui.dearpygui as dpg
 
 def main():
@@ -50,6 +51,15 @@ def main():
         final_slots = slot.slot(lit, unlit, rca_ps2, full_list, battery, parallel, serial_right(), unlit_bob, serial_port, serial_largest_num())
         dpg.set_value("Final Slots", str(final_slots))
 
+    def battleship_call():
+        serial = dpg.get_value("Serial")
+        ports = int(dpg.get_value("Ports"))
+        indicators = int(dpg.get_value("Unlit Total"))
+        batteries = int(dpg.get_value("Batteries"))
+
+        final_battleship = bs.battleship(serial, ports, indicators, batteries)
+        dpg.set_value("Final Battleship Numbers", str(final_battleship))
+
     # Gui Section
 
     dpg.create_context()
@@ -67,6 +77,9 @@ def main():
 
         dpg.add_text("Serial Port Present:")
         dpg.add_checkbox(tag="Serial Port", default_value=False)
+
+        dpg.add_text("Enter Amount of Batteries:")
+        dpg.add_input_int(tag="Batteries", default_value=0)
 
     with dpg.window(label="Forget Me Not", height=200, width=240, pos=(0, 220), no_resize=True, no_move=True, no_collapse=True):
 
@@ -92,9 +105,6 @@ def main():
 
         dpg.add_text("Unlit BOB Indicator Present:")
         dpg.add_checkbox(tag="Unlit BOB", default_value=False)
-
-        dpg.add_text("Enter Amount of Batteries:")
-        dpg.add_input_int(tag="Batteries", default_value=0)
         
         dpg.add_text("Enter the Slot Numbers:")
         dpg.add_input_text(tag="Full List", default_value="")
@@ -104,6 +114,15 @@ def main():
 
         dpg.add_text("Final Slot Numbers:")
         dpg.add_text("", tag="Final Slots")
+
+    with dpg.window(label="Battleship", height=420, width=210, pos=(240, 220), no_resize=True, no_move=True, no_collapse=True):
+        dpg.add_text("Amount of Ports:")
+        dpg.add_input_int(tag="Ports", default_value=0)
+
+        dpg.add_button(label="Calculate", callback=battleship_call)
+        dpg.add_text("Final Battleship Numbers:")
+        dpg.add_text("", tag="Final Battleship Numbers")
+
     # Setup and start Dear PyGui
     dpg.setup_dearpygui()
     dpg.show_viewport()
