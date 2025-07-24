@@ -1,2 +1,2 @@
 # KTANE Tools
-Tools use to solve some of the modules in modded KTANE
+Tools used to solve some of the modules in modded KTANE
