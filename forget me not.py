@@ -11,7 +11,7 @@ serial_port = int(input("Put 1 if serial port is present, if not put 0: "))
 for i in range(modules):
     intial.append(str(input("Enter the number: ")))
 
-def serial_list()->None:
+def serial_list_func()->None:
     global serial_list
     global serial_num_list
     global serial_num_largest
@@ -70,7 +70,7 @@ def all_others(i):
         num = com_list[0]
     return combiner(digit, num) 
 
-serial_list()
+serial_list_func()
 final.append(first_digit())
 final.append(second_digit())
 for i in range(modules - 2):
