@@ -1,5 +1,7 @@
 def battleship(serial_num: str, ports: int, indicator: int, batteries: int):  
-    letter_translate = {"A":"A","B":"B","C":"C","D":"D","E":"E","F":"A","G":"B","H":"C","I":"D","J":"E","K":"A","L":"B","M":"C","N":"D","O":"E","P":"A","Q":"B","R":"C","S":"D","T":"E","U":"A","V":"B","W":"C","X":"D","Y":"E","Z":"A"}
+    letter_translate = {"A":"A","B":"B","C":"C","D":"D","E":"E","F":"A","G":"B","H":"C","I":"D","J":"E","K":"A",
+                        "L":"B","M":"C","N":"D","O":"E","P":"A","Q":"B","R":"C","S":"D","T":"E","U":"A","V":"B",
+                        "W":"C","X":"D","Y":"E","Z":"A"}
     letter_num_translate = {1:"A",2:"B",3:"C",4:"D",5:"E"}
     serial_num_list = []
     serial_let_list = []
@@ -7,8 +9,8 @@ def battleship(serial_num: str, ports: int, indicator: int, batteries: int):
     def serial_num_to_lists(serial_num)->None:
         nonlocal serial_num_list, serial_let_list
         serial_let_list_pre = []
-        serial_tot_list = list(serial_num)
-        for i in serial_tot_list:
+        serial_to_list = list(serial_num)
+        for i in serial_to_list:
             if i.isdigit():
                 serial_num_list.append(i)
             else:
