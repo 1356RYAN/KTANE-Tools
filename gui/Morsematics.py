@@ -29,8 +29,10 @@ def morsematics(serial, battery, lit_list, unlit_list, received):
         received_list = list(received.upper())
         for char in received_list:
             letter_pair[0] += (" ".join(lit_list)).count(char)
+            normalize_letter_pair()
         for char in received_list:
             letter_pair[1] += (" ".join(unlit_list)).count(char)
+            normalize_letter_pair()
 
     def sum_pair() -> None:
         if math.sqrt(letter_pair[0] + letter_pair[1]) % 1 == 0:
@@ -64,24 +66,21 @@ def morsematics(serial, battery, lit_list, unlit_list, received):
                     letter_pair[1] -= letter_number_translate[char.upper()]
                     normalize_letter_pair()
 
-
     letter_pair_number(serial)
     indicator_match(lit_list, unlit_list, received)
-    normalize_letter_pair()
     sum_pair()
     normalize_letter_pair()
     largest_recieved(received)
     normalize_letter_pair()
     prime_square_batteries_recieved(received)
-    normalize_letter_pair()
 
     if letter_pair[0] > letter_pair[1]:
-        return letter_morse_translate[number_letter_translate[(letter_pair[0] - letter_pair[1]) % 27]]
+        return letter_morse_translate[number_letter_translate[(letter_pair[0] - letter_pair[1] - 1) % 26 + 1]]
 
     elif letter_pair[1] > letter_pair[0]:
-        return letter_morse_translate[number_letter_translate[(letter_pair[1] + letter_pair[0]) % 27]]
+        return letter_morse_translate[number_letter_translate[(letter_pair[1] + letter_pair[0] - 1) % 26 + 1]]
     else:
-        return letter_morse_translate[number_letter_translate[letter_pair[0] % 27]]
+        return letter_morse_translate[number_letter_translate[(letter_pair[0] - 1) % 26 + 1]]
 
 if __name__ == "__main__":
     serial = input("Enter the serial number: ")
