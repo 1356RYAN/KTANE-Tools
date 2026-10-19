@@ -35,7 +35,7 @@ def morsematics(serial, battery, lit_list, unlit_list, received):
             normalize_letter_pair()
 
     def sum_pair() -> None:
-        if math.sqrt(letter_pair[0] + letter_pair[1]) % 1 == 0:
+        if math.sqrt((letter_pair[0] + letter_pair[1] - 1) % 26 + 1) % 1 == 0:
             letter_pair[0] += 4
         else:
             letter_pair[1] -= 4

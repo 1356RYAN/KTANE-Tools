@@ -77,7 +77,6 @@ def slot(lit: int, unlit: int, RCA_PS2: bool, full: str, battery: int, parallel:
         slot = x + 1
         slot_num_orig = int(full_list[x])
         slot_num = all_slots(slot_num_orig, slot_num_orig)
-        print(slot_num)
         if slot == 1:
             slot_num = slot_position1(slot_num)
         elif slot == 2:
