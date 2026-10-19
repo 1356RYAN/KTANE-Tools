@@ -10,8 +10,12 @@ def main():
         global lit, unlit, lit_list, unlit_list
         lit_list = ((dpg.get_value("Lit List")).upper()).split(" ")
         unlit_list = ((dpg.get_value("Unlit List")).upper()).split(" ")
-        lit = len(lit_list) - 1
-        unlit = len(unlit_list) - 1
+        if "" in lit_list:
+            lit_list.remove("")
+        if "" in unlit_list:
+            unlit_list.remove("")
+        lit = len(lit_list)
+        unlit = len(unlit_list)
 
     def serial_right():
         serial = dpg.get_value("Serial")
