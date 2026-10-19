@@ -4,4 +4,4 @@ Currently Included: \
 Battleship \
 Forget Me Not \
 Slots \
-Morsematics(In Progress)
+Morsematics
